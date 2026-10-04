@@ -10,6 +10,15 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
+import textwrap
+
+_original_markdown = st.markdown
+def _fixed_markdown(body, *args, **kwargs):
+    if isinstance(body, str):
+        body = textwrap.dedent(body)
+    return _original_markdown(body, *args, **kwargs)
+
+st.markdown = _fixed_markdown
 
 from backend.data_generator import generate_ess_dataset
 from backend.models import FEATURE_COLS
@@ -2770,3 +2779,5 @@ else:
         "with the FastAPI backend for training, batch "
         "prediction and AI explanations."
     )
+
+
