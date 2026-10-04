@@ -1,6 +1,10 @@
 import os
 import requests
+import sys
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 
 import pandas as pd
 import plotly.express as px
@@ -28,7 +32,6 @@ st.set_page_config(
 # CONFIG
 # ============================================================
 
-ROOT = Path(__file__).resolve().parent.parent
 
 DATA_FILE = (
     ROOT
