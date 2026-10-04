@@ -1,4 +1,4 @@
-
+import requests
 from pathlib import Path
 
 import pandas as pd
@@ -6,8 +6,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-from data_generator import generate_ess_dataset
-from models import FEATURE_COLS, ScreeningEngine
+from backend.data_generator import generate_ess_dataset
+from backend.models import FEATURE_COLS, ScreeningEngine
 
 
 # ============================================================
@@ -22,8 +22,8 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-ROOT = Path(__file__).resolve().parent
-DATA_FILE = ROOT / "ESS_predictive_screening_dataset_1500.csv"
+ROOT = Path(__file__).resolve().parent.parent
+DATA_FILE = ROOT / "data" / "ESS_predictive_screening_dataset_1500.csv"
 
 PAGES = [
     "Command Center",
