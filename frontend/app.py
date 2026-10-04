@@ -16,6 +16,9 @@ _original_markdown = st.markdown
 def _fixed_markdown(body, *args, **kwargs):
     if isinstance(body, str):
         body = textwrap.dedent(body)
+    if kwargs.get("unsafe_allow_html", False):
+        kwargs.pop("unsafe_allow_html", None)
+        return st.html(body)
     return _original_markdown(body, *args, **kwargs)
 
 st.markdown = _fixed_markdown
