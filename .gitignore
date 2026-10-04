@@ -2,9 +2,13 @@
 venv/
 env/
 __pycache__/
-*.pyc
+*.py[cod]
 *.pyo
 *.pyd
 .env
 .vscode/
+.pytest_cache/
+.streamlit/
+*.log
 .DS_Store
+Thumbs.db
