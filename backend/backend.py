@@ -24,7 +24,16 @@ app.add_middleware(
 
 
 service = ScreeningService()
+from pathlib import Path
 
+try:
+    dataset_path = Path(__file__).resolve().parent.parent / "data" / "ESS_predictive_screening_dataset_1500.csv"
+    df = pd.read_csv(dataset_path)
+    df = prepare_dataframe(df)
+    service.train(df)
+    print("Model trained automatically at startup.")
+except Exception as exc:
+    print(f"Startup training failed: {exc}")
 
 # ============================================================
 # HEALTH CHECK
